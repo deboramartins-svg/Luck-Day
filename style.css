@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
@@ -225,4 +226,233 @@ body.light-theme .grid-3d {
 /* Garante que os símbolos da cascata fiquem pretos no tema claro */
 body.light-theme .falling-item {
     color: #111111 !important;
+=======
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg: #0a0a0a;
+    --card: #141414;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.4);
+    --accent: #ff0033; /* Vermelho Y2K / Dark */
+    --accent-dark: #8b0000;
+    --border: rgba(255, 0, 51, 0.25);
+}
+
+/* Cores para o Modo Claro */
+body.light-theme {
+    --bg: #e6e6e6;
+    --card: #ffffff;
+    --text: #111111;
+    --muted: rgba(0, 0, 0, 0.4);
+    --accent: #cc0029;
+    --accent-dark: #99001f;
+    --border: rgba(204, 0, 41, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    padding: 20px 10px;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Esconde o quadriculado completamente no modo claro */
+body.light-theme .grid-3d {
+    opacity: 0;
+}
+
+/* Botão de Trocar Tema Flutuante */
+#themeToggleBtn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    z-index: 999;
+    transition: 0.3s;
+}
+
+#themeToggleBtn:hover {
+    border-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.grid-3d {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1; 
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.container {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+}
+
+.header p {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+}
+
+/* Input minimalista */
+.add-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.add-box input {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    outline: none;
+}
+
+.add-box input:focus { border-color: var(--accent); }
+
+.add-box button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.add-box button:hover { background: var(--text); color: var(--bg); }
+
+/* Grid Compacto */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+}
+
+.project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: grab;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.project-card:active { cursor: grabbing; }
+.project-card.dragging { opacity: 0.3; border: 1px dashed var(--accent); }
+.project-card:hover { border-color: var(--accent); }
+
+.project-card h3 {
+    font-size: 0.75rem;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding-left: 6px;
+}
+
+.delete-btn:hover { color: var(--accent); }
+
+/* Comprado / Adquirido */
+.project-card.purchased {
+    background: var(--accent-dark);
+    border-color: var(--accent);
+    opacity: 0.5;
+}
+
+.project-card.purchased h3 {
+    text-decoration: line-through;
+    color: #fff;
+}
+
+.project-card.purchased .delete-btn { color: rgba(255,255,255,0.7); }
+
+/* Explosão de itens Y2K / Estrelas */
+.star-explosion {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1.2rem;
+    color: var(--accent);
+    animation: star-animate 0.6s ease-out forwards;
+}
+
+@keyframes star-animate {
+    0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--random-x)), calc(-50% + var(--random-y))) scale(1.3) rotate(180deg); opacity: 0; }
+}
+
+/* --- EFEITO DE CASCATA NO FUNDO (Estilo Dark/Treino Y2K) --- */
+.falling-item {
+    position: fixed;
+    top: -50px;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+    opacity: 0.65;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
+
+/* Garante que os símbolos da cascata fiquem pretos no tema claro */
+body.light-theme .falling-item {
+    color: #111111 !important;
+>>>>>>> 91226c1549af21051e019a0d73cc7e9e8139896b
 }
