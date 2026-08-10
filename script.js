@@ -1,18 +1,4 @@
-let itens = JSON.parse(localStorage.getItem('luckDay_itens')) || [
-    "Creatina",
-    "Whey Protein",
-    "Pré-Treino",
-    "Camiseta Oversized",
-    "Regata DryFit",
-    "Shorts de Treino",
-    "Tênis de Corrida",
-    "Strap / Munhequeira",
-    "Garrafa de Água 2L",
-    "Fone Bluetooth",
-    "Mochila Tática",
-    "Perfume",
-    "Boné Streetwear"
-];
+let itens = JSON.parse(localStorage.getItem('luckDay_itens')) || [];
 
 const gridContainer = document.getElementById('shoppingGrid');
 const newItemInput = document.getElementById('newItemInput');
