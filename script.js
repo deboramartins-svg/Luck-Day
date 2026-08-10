@@ -32,40 +32,6 @@ themeToggleBtn.onclick = () => {
 function salvarNoNavegador() {
     localStorage.setItem('luckDay_itens', JSON.stringify(itens));
 }
-
-function atualizarCronometro() {
-    const agora = new Date();
-    let ano = agora.getFullYear();
-    let mes = agora.getMonth();
-
-    let alvo = new Date(ano, mes, 15, 23, 59, 59);
-
-    if (agora > alvo) {
-        mes += 1;
-        if (mes > 11) {
-            mes = 0;
-            ano += 1;
-        }
-        alvo = new Date(ano, mes, 15, 23, 59, 59);
-    }
-
-    const diferenca = alvo - agora;
-
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-    if (agora.getDate() === 15) {
-        countdownTimer.innerText = `> É HOJEEE!!!`;
-    } else {
-        countdownTimer.innerText = `> CONTAGEM: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
-    }
-}
-
-setInterval(atualizarCronometro, 1000);
-atualizarCronometro();
-
 function renderizarLista() {
     gridContainer.innerHTML = '';
     
